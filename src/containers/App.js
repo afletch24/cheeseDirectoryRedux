@@ -1,9 +1,10 @@
 import React, { Component} from 'react';
-import CardList from './CardList';
-import {cheese} from './cheese';
-import SearchBox from "./SearchBox";
-import Scroll from "./Scroll";
+import CardList from '../components/CardList';
+import {cheese} from '../cheese';
+import SearchBox from "../components/SearchBox";
+import Scroll from "../components/Scroll";
 import './App.css';
+import ErrorBoundry from "../components/ErrorBoundry";
 
 class App extends Component{
     constructor(){
@@ -35,7 +36,9 @@ class App extends Component{
                 <h1> Cheese </h1>
                 <SearchBox searchChange = {this.onSearchChange}/>
                 <Scroll>
-                    <CardList fcheese={ filteredCheese } />
+                    <ErrorBoundry>
+                        <CardList fcheese={ filteredCheese } />
+                    </ErrorBoundry>
                 </Scroll>
             </div>
     ) 
